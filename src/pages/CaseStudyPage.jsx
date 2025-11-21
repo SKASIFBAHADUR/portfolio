@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ExternalLink, Github, Server, Code, Database, Globe, Shield, Zap, Layers } from 'lucide-react'
@@ -22,6 +22,17 @@ const CaseStudyPage = () => {
   const data = caseStudyData[projectId] || caseStudyData.ledgercore
 
   const [showRepoDropdown, setShowRepoDropdown] = useState(false)
+  const [particleCount, setParticleCount] = useState(10)
+  
+  // Reduce particles on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setParticleCount(window.innerWidth <= 768 ? 5 : 10)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <div className="case-study-page">
@@ -30,7 +41,7 @@ const CaseStudyPage = () => {
         <div className="animated-grid"></div>
         <div className="floating-particles">
           {useMemo(() => 
-            Array.from({ length: 10 }, (_, i) => {
+            Array.from({ length: particleCount }, (_, i) => {
               const left = Math.random() * 100
               const top = Math.random() * 100
               const duration = 5 + Math.random() * 3
@@ -47,7 +58,7 @@ const CaseStudyPage = () => {
                   }}
                 />
               )
-            }), []
+            }), [particleCount]
           )}
         </div>
         <div className="gradient-orb orb-1"></div>

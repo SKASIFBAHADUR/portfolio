@@ -975,13 +975,27 @@
   .orb-1,
   .orb-2,
   .orb-3 {
-    width: 200px;
-    height: 200px;
-    filter: blur(60px);
+    width: 150px;
+    height: 150px;
+    filter: blur(40px);
+    opacity: 0.2; /* Reduce opacity on mobile */
   }
 
   .animated-grid {
     background-size: 30px 30px;
+    opacity: 0.3; /* Reduce grid opacity on mobile */
+  }
+
+  .floating-particles {
+    display: none; /* Hide particles on mobile for better performance */
+  }
+
+  .case-study-section {
+    padding: 1.25rem; /* Reduce padding on mobile */
+  }
+
+  .section-content {
+    font-size: 1rem; /* Slightly smaller text on mobile */
   }
 }
 

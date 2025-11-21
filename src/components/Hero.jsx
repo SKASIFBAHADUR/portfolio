@@ -6,8 +6,18 @@ import './Hero.css'
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
   const keywords = ['Java', 'Spring Boot', 'Microservices', 'System Design', 'Distributed Systems']
   const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -40,7 +50,7 @@ const Hero = () => {
       {/* Animated background elements */}
       <div className="hero-background">
         <div className="floating-shapes">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(isMobile ? 3 : 6)].map((_, i) => (
             <motion.div
               key={i}
               className="floating-shape"

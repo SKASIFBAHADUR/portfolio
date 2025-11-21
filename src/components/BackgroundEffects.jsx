@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { lazy, Suspense } from 'react'
 import './BackgroundEffects.css'
 
@@ -6,15 +6,26 @@ import './BackgroundEffects.css'
 const Abstract3DShape = lazy(() => import('./Abstract3DShape'))
 
 const BackgroundEffects = () => {
-  // Generate random particles - reduced from 100 to 30 for performance
+  // Generate random particles - reduced for performance, even less on mobile
+  const [particleCount, setParticleCount] = useState(20)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setParticleCount(window.innerWidth <= 768 ? 10 : 20)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+  
   const particles = React.useMemo(() => 
-    Array.from({ length: 30 }, (_, i) => ({
+    Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
       delay: Math.random() * 3,
-    })), []
+    })), [particleCount]
   )
 
   return (

@@ -18,3 +18,23 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  * {
+    /* Reduce animation complexity on mobile */
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* Disable expensive effects on mobile */
+  * {
+    backdrop-filter: none !important;
+  }
+
+  /* Optimize scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+

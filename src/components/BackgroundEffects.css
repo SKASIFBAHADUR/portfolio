@@ -99,8 +99,19 @@
 }
 
 @media (max-width: 768px) {
+  .particles-container {
+    display: none; /* Hide particles on mobile for better performance */
+  }
+
   .liquid-shape {
     bottom: -30%;
+    filter: blur(60px); /* Reduce blur on mobile */
+    opacity: 0.5; /* Reduce opacity */
+  }
+
+  .abstract-3d-container {
+    display: none; /* Hide 3D shape on mobile for better performance */
+  }
     height: 60%;
     filter: blur(60px);
   }

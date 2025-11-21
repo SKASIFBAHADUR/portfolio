@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Code2, Rocket, Zap, Shield, TrendingUp, Calendar, Target } from 'lucide-react'
 import './Section.css'
 import './About.css'
+
 const About = () => {
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   const timeline = [
     {
       year: '2019',
@@ -109,8 +120,8 @@ const About = () => {
           className="about-timeline"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true, margin: isMobile ? '-50px' : '-100px' }}
+          transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.3 }}
         >
           <h3 className="timeline-title">
             <Calendar className="timeline-title-icon" size={24} />

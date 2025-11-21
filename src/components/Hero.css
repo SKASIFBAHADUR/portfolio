@@ -321,6 +321,14 @@
     padding: 6rem 1.5rem 3rem;
   }
 
+  .floating-shapes {
+    display: none; /* Hide floating shapes on mobile for better performance */
+  }
+
+  .hero-intro {
+    backdrop-filter: none !important; /* Remove backdrop filter on mobile */
+  }
+
   .hero-intro {
     font-size: 0.85rem;
     padding: 0.5rem 1.25rem;

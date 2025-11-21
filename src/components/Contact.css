@@ -187,11 +187,39 @@
 
   .contact-hero,
   .contact-panel {
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+
+  .contact-actions {
+    flex-direction: column;
   }
 
   .contact-actions .cta {
     width: 100%;
     justify-content: center;
+  }
+
+  .contact-intro .section-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .contact-offerings ul {
+    gap: 0.75rem;
+  }
+
+  .contact-offerings li {
+    font-size: 0.9rem;
+  }
+}
+
+/* Reduce animations on mobile for better performance */
+@media (max-width: 768px) {
+  .contact-hero,
+  .contact-panel {
+    animation: none !important;
+  }
+  
+  * {
+    transition-duration: 0.2s !important;
   }
 }

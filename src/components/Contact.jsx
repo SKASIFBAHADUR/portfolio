@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, Calendar, Github, Linkedin, Home, ArrowRight, Shield, Zap } from 'lucide-react'
+import { Mail, Phone, Github, Linkedin, Home, ArrowRight, Shield, Zap } from 'lucide-react'
 import './Section.css'
 import './Contact.css'
 
@@ -52,7 +52,7 @@ const Contact = () => (
         </div>
 
         <div className="contact-actions">
-          <a className="cta primary" href="mailto:shaikbahadur19@gmall.com">
+          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=System%20Call%20Booking">
             <Mail size={18} />
             Book a systems call
           </a>
@@ -85,26 +85,21 @@ const Contact = () => (
         </div>
 
         <div className="panel-links">
-          <a href="https://github.com/" target="_blank" rel="noreferrer" className="panel-link">
+          <a href="https://github.com/SKASIFBAHADUR" target="_blank" rel="noreferrer" className="panel-link">
             <Github size={18} />
             GitHub
             <ArrowRight size={16} />
           </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="panel-link">
+          <a href="https://www.linkedin.com/in/bahadur-sk-05701031b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="panel-link">
             <Linkedin size={18} />
             LinkedIn
-            <ArrowRight size={16} />
-          </a>
-          <a href="/resume.pdf" className="panel-link">
-            <Calendar size={18} />
-            Download resume
             <ArrowRight size={16} />
           </a>
         </div>
 
         <div className="panel-footer">
           <p>Need a quick architecture review?</p>
-          <a className="cta primary" href="mailto:shaikbahadur19@gmall.com?subject=Architecture%20Review%20Request">
+          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=Architecture%20Review%20Request">
             <Shield size={18} />
             Request review
           </a>
