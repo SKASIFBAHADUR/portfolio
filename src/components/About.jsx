@@ -109,8 +109,8 @@ const About = () => {
           className="about-timeline"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <h3 className="timeline-title">
             <Calendar className="timeline-title-icon" size={24} />
@@ -123,8 +123,8 @@ const About = () => {
                 className="timeline-item"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div className="timeline-marker" />
                 <div className="timeline-content">
@@ -143,7 +143,7 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-100px' }}
         >
           <motion.div className="about-card" variants={itemVariants}>
             <div className="card-header">

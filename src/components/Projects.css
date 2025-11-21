@@ -265,10 +265,99 @@
   color: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+button.project-link.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .project-link:hover {
   transform: translateY(-4px);
+}
+
+.repo-dropdown-container {
+  position: relative;
+}
+
+.repo-dropdown-container .project-link.secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.repo-dropdown-container .project-link.secondary svg.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.repo-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 220px;
+  background: linear-gradient(180deg, rgba(12, 12, 12, 0.98) 0%, rgba(6, 6, 6, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.repo-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.repo-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.repo-dropdown-item:hover {
+  background: rgba(102, 126, 234, 0.15);
+  color: #ffffff;
+  padding-left: 1.5rem;
+}
+
+.repo-dropdown-item svg:first-child {
+  color: rgba(102, 126, 234, 0.9);
+  flex-shrink: 0;
+}
+
+.repo-dropdown-item span {
+  flex: 1;
+  font-weight: 500;
+}
+
+.repo-dropdown-item svg:last-child {
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 @media (max-width: 1200px) {
@@ -301,5 +390,11 @@
   .project-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .repo-dropdown {
+    right: auto;
+    left: 0;
+    min-width: 100%;
   }
 }

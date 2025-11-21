@@ -16,6 +16,8 @@
   height: 100%;
   transform-style: preserve-3d;
   animation: float3d 8s ease-in-out infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .shape-layer {
@@ -30,6 +32,8 @@
   );
   filter: blur(18px);
   box-shadow: inset -40px -60px 120px rgba(0, 0, 0, 0.65), inset 20px 30px 80px rgba(120, 120, 120, 0.25);
+  will-change: transform, border-radius;
+  transform: translate3d(0, 0, 0);
 }
 
 .layer-1 {
@@ -94,104 +98,108 @@
 
 @keyframes float3d {
   0%, 100% {
-    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+    transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg);
   }
   25% {
-    transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+    transform: translate3d(0, -20px, 0) rotateX(5deg) rotateY(5deg);
   }
   50% {
-    transform: translateY(-40px) rotateX(0deg) rotateY(-5deg);
+    transform: translate3d(0, -40px, 0) rotateX(0deg) rotateY(-5deg);
   }
   75% {
-    transform: translateY(-20px) rotateX(-5deg) rotateY(0deg);
+    transform: translate3d(0, -20px, 0) rotateX(-5deg) rotateY(0deg);
   }
 }
 
 @keyframes morph1 {
   0%, 100% {
     border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-    transform: translateX(-50%) translateZ(0px) scale(1);
+    transform: translate3d(-50%, 0, 0) scale(1);
   }
   25% {
     border-radius: 50% 40% 55% 45% / 45% 50% 40% 55%;
-    transform: translateX(-50%) translateZ(0px) scale(1.05);
+    transform: translate3d(-50%, 0, 0) scale(1.05);
   }
   50% {
     border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-    transform: translateX(-50%) translateZ(0px) scale(1.1);
+    transform: translate3d(-50%, 0, 0) scale(1.1);
   }
   75% {
     border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
-    transform: translateX(-50%) translateZ(0px) scale(1.05);
+    transform: translate3d(-50%, 0, 0) scale(1.05);
   }
 }
 
 @keyframes morph2 {
   0%, 100% {
     border-radius: 50% 40% 55% 45% / 45% 50% 40% 55%;
-    transform: translateX(-50%) translateZ(30px) rotateX(15deg) scale(1);
+    transform: translate3d(-50%, 0, 30px) rotateX(15deg) scale(1);
   }
   25% {
     border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-    transform: translateX(-50%) translateZ(30px) rotateX(15deg) scale(1.05);
+    transform: translate3d(-50%, 0, 30px) rotateX(15deg) scale(1.05);
   }
   50% {
     border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
-    transform: translateX(-50%) translateZ(30px) rotateX(15deg) scale(1.1);
+    transform: translate3d(-50%, 0, 30px) rotateX(15deg) scale(1.1);
   }
   75% {
     border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-    transform: translateX(-50%) translateZ(30px) rotateX(15deg) scale(1.05);
+    transform: translate3d(-50%, 0, 30px) rotateX(15deg) scale(1.05);
   }
 }
 
 @keyframes morph3 {
   0%, 100% {
     border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-    transform: translateX(-50%) translateZ(60px) rotateY(20deg) scale(1);
+    transform: translate3d(-50%, 0, 60px) rotateY(20deg) scale(1);
   }
   25% {
     border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
-    transform: translateX(-50%) translateZ(60px) rotateY(20deg) scale(1.05);
+    transform: translate3d(-50%, 0, 60px) rotateY(20deg) scale(1.05);
   }
   50% {
     border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-    transform: translateX(-50%) translateZ(60px) rotateY(20deg) scale(1.1);
+    transform: translate3d(-50%, 0, 60px) rotateY(20deg) scale(1.1);
   }
   75% {
     border-radius: 50% 40% 55% 45% / 45% 50% 40% 55%;
-    transform: translateX(-50%) translateZ(60px) rotateY(20deg) scale(1.05);
+    transform: translate3d(-50%, 0, 60px) rotateY(20deg) scale(1.05);
   }
 }
 
 @keyframes morph4 {
   0%, 100% {
     border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
-    transform: translateX(-50%) translateZ(90px) rotateX(-10deg) rotateY(-15deg) scale(1);
+    transform: translate3d(-50%, 0, 90px) rotateX(-10deg) rotateY(-15deg) scale(1);
   }
   25% {
     border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-    transform: translateX(-50%) translateZ(90px) rotateX(-10deg) rotateY(-15deg) scale(1.05);
+    transform: translate3d(-50%, 0, 90px) rotateX(-10deg) rotateY(-15deg) scale(1.05);
   }
   50% {
     border-radius: 50% 40% 55% 45% / 45% 50% 40% 55%;
-    transform: translateX(-50%) translateZ(90px) rotateX(-10deg) rotateY(-15deg) scale(1.1);
+    transform: translate3d(-50%, 0, 90px) rotateX(-10deg) rotateY(-15deg) scale(1.1);
   }
   75% {
     border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
-    transform: translateX(-50%) translateZ(90px) rotateX(-10deg) rotateY(-15deg) scale(1.05);
+    transform: translate3d(-50%, 0, 90px) rotateX(-10deg) rotateY(-15deg) scale(1.05);
   }
 }
 
 @keyframes pulse {
   0%, 100% {
     opacity: 0.6;
-    transform: translateX(-50%) scale(1);
+    transform: translate3d(-50%, 0, 0) scale(1);
   }
   50% {
     opacity: 0.9;
-    transform: translateX(-50%) scale(1.1);
+    transform: translate3d(-50%, 0, 0) scale(1.1);
   }
+}
+
+.shape-glow {
+  will-change: transform, opacity;
 }
 
 /* Enhanced 3D effect with shadows and highlights */

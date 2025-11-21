@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Activity, Layers, Server, Database } from 'lucide-react'
+import { ExternalLink, Github, Activity, Layers, Server, Database, ChevronDown } from 'lucide-react'
 import './Section.css'
 import './Projects.css'
 
 const projects = [
   {
+    id: 'ledgercore',
     title: 'LedgerCore Banking APIs',
     subtitle: 'Realtime core banking rails powering compliant payments & ledger operations',
     badges: ['Realtime', 'Ledger', 'Compliance'],
@@ -47,107 +49,163 @@ const projects = [
       { icon: Activity, label: 'Kafka' },
       { icon: Database, label: 'PostgreSQL' },
     ],
-    links: { caseStudy: '#', repo: '#', demo: '#' },
+    links: {
+      frontendRepo: 'https://github.com/SKASIFBAHADUR/ledger_core_frontend',
+      backendRepo: 'https://github.com/SKASIFBAHADUR/ledger_core_backend',
+      demo: 'https://sprightly-stroopwafel-9bee75.netlify.app/login',
+    },
   },
 ]
 
-const Projects = () => (
-  <section id="projects" className="projects">
-    <div className="section-container">
-      <div className="section-header">
-        <span className="section-kicker">Projects</span>
-        <h2 className="section-title">Case studies built for scale, resiliency, and measurable outcomes</h2>
-        <p className="section-subtitle">
-          Each build pairs a clear problem statement with architecture decisions, measurable impact, and transparent tech trade-offs.
-        </p>
-      </div>
+const Projects = () => {
+  const [openDropdown, setOpenDropdown] = useState(null)
 
-      <div className="projects-list">
-        {projects.map((project, index) => (
-          <motion.article
-            key={project.title}
-            className="case-study-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-          >
-            <div className="case-card-top">
-              <div className="project-meta">
-                <div className="project-badges">
-                  {project.badges.map((badge) => (
-                    <span key={badge} className="project-badge">
-                      {badge}
-                    </span>
-                  ))}
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.repo-dropdown-container')) {
+        setOpenDropdown(null)
+      }
+    }
+
+    if (openDropdown !== null) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [openDropdown])
+
+  return (
+    <section id="projects" className="projects">
+      <div className="section-container">
+        <div className="section-header">
+          <span className="section-kicker">Projects</span>
+          <h2 className="section-title">Case studies built for scale, resiliency, and measurable outcomes</h2>
+          <p className="section-subtitle">
+            Each build pairs a clear problem statement with architecture decisions, measurable impact, and transparent tech trade-offs.
+          </p>
+        </div>
+
+        <div className="projects-list">
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              className="case-study-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className="case-card-top">
+                <div className="project-meta">
+                  <div className="project-badges">
+                    {project.badges.map((badge) => (
+                      <span key={badge} className="project-badge">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-subtitle">{project.subtitle}</p>
+                  <div className="project-persona">
+                    <span className="persona-label">Built for</span>
+                    <p>{project.persona}</p>
+                  </div>
                 </div>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-subtitle">{project.subtitle}</p>
-                <div className="project-persona">
-                  <span className="persona-label">Built for</span>
-                  <p>{project.persona}</p>
+                <motion.div
+                  className="project-media"
+                  style={{ background: project.accent }}
+                  whileHover={{ rotateX: 4, rotateY: -4, scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 150, damping: 12 }}
+                >
+                  <div className="media-overlay">
+                    <span>Architecture Snapshot</span>
+                    <span className="media-detail">Hover to explore</span>
+                  </div>
+                  <div className="media-grid">
+                    <div />
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="project-sections">
+                {project.sections.map((section) => (
+                  <div key={section.title} className="project-section">
+                    <h4>{section.title}</h4>
+                    <p>{section.copy}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="project-metrics">
+                {project.metrics.map((metric) => (
+                  <div key={metric.label} className="metric-card">
+                    <span className="metric-value">{metric.value}</span>
+                    <span className="metric-label">{metric.label}</span>
+                    <span className="metric-detail">{metric.detail}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="project-tech-icons">
+                {project.techHighlights.map((tech) => (
+                  <div key={tech.label} className="tech-chip">
+                    <tech.icon size={16} />
+                    <span>{tech.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="project-actions">
+                <Link to={`/projects/${project.id}`} className="project-link primary">
+                  <span>View Case Study</span>
+                  <ExternalLink size={16} />
+                </Link>
+                <div className="repo-dropdown-container">
+                  <button
+                    className="project-link secondary"
+                    onClick={() => setOpenDropdown(openDropdown === project.id ? null : project.id)}
+                  >
+                    <span>Explore Repo</span>
+                    <Github size={16} />
+                    <ChevronDown size={14} className={openDropdown === project.id ? 'rotate' : ''} />
+                  </button>
+                  {openDropdown === project.id && (
+                    <div className="repo-dropdown">
+                      <a
+                        href={project.links.frontendRepo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="repo-dropdown-item"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        <Github size={16} />
+                        <span>Frontend Repository</span>
+                        <ExternalLink size={14} />
+                      </a>
+                      <a
+                        href={project.links.backendRepo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="repo-dropdown-item"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        <Github size={16} />
+                        <span>Backend Repository</span>
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
-              <motion.div
-                className="project-media"
-                style={{ background: project.accent }}
-                whileHover={{ rotateX: 4, rotateY: -4, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 150, damping: 12 }}
-              >
-                <div className="media-overlay">
-                  <span>Architecture Snapshot</span>
-                  <span className="media-detail">Hover to explore</span>
-                </div>
-                <div className="media-grid">
-                  <div />
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="project-sections">
-              {project.sections.map((section) => (
-                <div key={section.title} className="project-section">
-                  <h4>{section.title}</h4>
-                  <p>{section.copy}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="project-metrics">
-              {project.metrics.map((metric) => (
-                <div key={metric.label} className="metric-card">
-                  <span className="metric-value">{metric.value}</span>
-                  <span className="metric-label">{metric.label}</span>
-                  <span className="metric-detail">{metric.detail}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="project-tech-icons">
-              {project.techHighlights.map((tech) => (
-                <div key={tech.label} className="tech-chip">
-                  <tech.icon size={16} />
-                  <span>{tech.label}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="project-actions">
-              <a href={project.links.caseStudy} className="project-link primary" target="_blank" rel="noreferrer">
-                <span>View Case Study</span>
-                <ExternalLink size={16} />
-              </a>
-              <a href={project.links.repo} className="project-link secondary" target="_blank" rel="noreferrer">
-                <span>Explore Repo</span>
-                <Github size={16} />
-              </a>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export default Projects
 

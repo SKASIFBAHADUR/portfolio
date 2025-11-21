@@ -8,6 +8,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import SkillsPage from './pages/SkillsPage'
 import ContactPage from './pages/ContactPage'
 import CollaboratePage from './pages/CollaboratePage'
+import CaseStudyPage from './pages/CaseStudyPage'
 import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:projectId" element={<CaseStudyPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/collaborate" element={<CollaboratePage />} />

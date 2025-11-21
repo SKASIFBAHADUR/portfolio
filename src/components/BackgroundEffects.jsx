@@ -1,16 +1,21 @@
 import React from 'react'
-import Abstract3DShape from './Abstract3DShape'
+import { lazy, Suspense } from 'react'
 import './BackgroundEffects.css'
 
+// Lazy load Abstract3DShape to improve initial load
+const Abstract3DShape = lazy(() => import('./Abstract3DShape'))
+
 const BackgroundEffects = () => {
-  // Generate random particles
-  const particles = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 3,
-  }))
+  // Generate random particles - reduced from 100 to 30 for performance
+  const particles = React.useMemo(() => 
+    Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      delay: Math.random() * 3,
+    })), []
+  )
 
   return (
     <div className="background-effects">
@@ -30,7 +35,9 @@ const BackgroundEffects = () => {
         ))}
       </div>
       <div className="liquid-shape"></div>
-      <Abstract3DShape />
+      <Suspense fallback={null}>
+        <Abstract3DShape />
+      </Suspense>
     </div>
   )
 }

@@ -152,7 +152,7 @@ const Hero = () => {
             <span>See My Work</span>
             <ArrowRight className="cta-icon" size={18} />
           </Link>
-          <Link to="/collaborate" className="hero-cta secondary">
+          <Link to="/contact" className="hero-cta secondary">
             <span>Open To Opportunities</span>
             <Sparkles className="cta-icon" size={18} />
           </Link>
