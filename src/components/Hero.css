@@ -65,11 +65,15 @@
   right: 5%;
 }
 
-.hero-content {
-  max-width: 1000px;
-  position: relative;
-  z-index: 1;
+ .hero-content {
+  margin: 0 auto;         /* centers horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centers children */
+  justify-content: center;
+  text-align: center;
 }
+
 
 .hero-intro {
   display: inline-flex;
