@@ -28,10 +28,13 @@
 }
 
 @keyframes twinkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.2;
     transform: translate3d(0, 0, 0) scale(0.8);
   }
+
   50% {
     opacity: 0.8;
     transform: translate3d(0, 0, 0) scale(1.2);
@@ -80,40 +83,47 @@
 }
 
 @keyframes liquidFlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1);
     border-radius: 50% 50% 0 0;
   }
+
   25% {
     transform: translate3d(0, -5%, 0) scale(1.05);
     border-radius: 45% 55% 0 0;
   }
+
   50% {
     transform: translate3d(0, -10%, 0) scale(1.1);
     border-radius: 55% 45% 0 0;
   }
+
   75% {
     transform: translate3d(0, -5%, 0) scale(1.05);
     border-radius: 50% 50% 0 0;
   }
 }
 
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .particles-container {
-    display: none; /* Hide particles on mobile for better performance */
+    display: none;
+    /* Hide particles on mobile for better performance */
   }
 
   .liquid-shape {
     bottom: -30%;
-    filter: blur(60px); /* Reduce blur on mobile */
-    opacity: 0.5; /* Reduce opacity */
+    height: 60%;
+    filter: blur(60px);
+    /* Reduce blur on mobile */
+    opacity: 0.5;
+    /* Reduce opacity */
   }
 
   .abstract-3d-container {
-    display: none; /* Hide 3D shape on mobile for better performance */
-  }
-    height: 60%;
-    filter: blur(60px);
+    display: none;
+    /* Hide 3D shape on mobile for better performance */
   }
 }
-
