@@ -9,7 +9,7 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false)
   const keywords = ['Java', 'Spring Boot', 'Microservices', 'System Design', 'Distributed Systems']
   const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0)
-  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -48,7 +48,7 @@ const Hero = () => {
   return (
     <section id="hero" className="hero">
       {/* Animated background elements */}
-      <div className="hero-background">
+      <div className="hero-background" aria-hidden="true">
         <div className="floating-shapes">
           {[...Array(isMobile ? 3 : 6)].map((_, i) => (
             <motion.div
@@ -123,10 +123,9 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I build <span className="highlight">fast, scalable, production-ready</span> digital systems & APIs.
+          I am a <span className="highlight">Full Stack Developer</span> who builds <span className="highlight">high-performance, scalable systems</span>.
           <br />
-          Backend-focused Full Stack Developer specializing in{' '}
-          <span className="highlight">Java, Spring Boot, Microservices, and scalable system architecture</span>.
+          My mission is to solve complex backend challenges and deliver <span className="highlight">production-ready software</span> that drives business growth.
         </motion.p>
 
         {/* Tech Stack Visual */}
@@ -135,17 +134,27 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
+          role="list"
+          aria-label="Technical skills"
         >
           {techLogos.map((tech, index) => (
             <motion.div
               key={tech.label}
               className="tech-icon-wrapper"
-              whileHover={{ scale: 1.2, y: -5 }}
+              whileHover={{
+                scale: 1.2,
+                y: -5,
+                transition: { duration: 0.2, delay: 0 }
+              }}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 + index * 0.1 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { delay: 1 + index * 0.1 }
+              }}
+              role="listitem"
             >
-              <tech.icon className="tech-icon" size={24} />
+              <tech.icon className="tech-icon" size={24} aria-hidden="true" />
               <span className="tech-label">{tech.label}</span>
             </motion.div>
           ))}
@@ -158,13 +167,13 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <Link to="/projects" className="hero-cta primary">
+          <Link to="/projects" className="hero-cta primary" aria-label="View my portfolio projects">
             <span>See My Work</span>
-            <ArrowRight className="cta-icon" size={18} />
+            <ArrowRight className="cta-icon" size={18} aria-hidden="true" />
           </Link>
-          <Link to="/contact" className="hero-cta secondary">
+          <Link to="/contact" className="hero-cta secondary" aria-label="Contact me for opportunities">
             <span>Open To Opportunities</span>
-            <Sparkles className="cta-icon" size={18} />
+            <Sparkles className="cta-icon" size={18} aria-hidden="true" />
           </Link>
         </motion.div>
 
@@ -177,6 +186,7 @@ const Hero = () => {
           x: mousePosition.x,
           y: mousePosition.y,
         }}
+        aria-hidden="true"
       />
     </section>
   )

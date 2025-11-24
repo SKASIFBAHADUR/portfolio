@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://shaikbahadur.dev/sitemap.xml
+
+# Disallow API routes and JSON files
+User-agent: *
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

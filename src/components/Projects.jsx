@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { ExternalLink, Github, Activity, Layers, Server, Database, ChevronDown } from 'lucide-react'
 import './Section.css'
 import './Projects.css'
@@ -78,6 +79,11 @@ const Projects = () => {
 
   return (
     <section id="projects" className="projects">
+      <Helmet>
+        <title>Projects | Java Full Stack Developer Projects | Shaik Bahadur</title>
+        <meta name="description" content="Explore my Java full stack developer projects and backend developer portfolio examples. Each project highlights real-world problem solving, API design, database modeling, authentication, system architecture, and complete end-to-end development. From frontend UI to backend microservices, every project reflects a strong engineering mindset." />
+        <meta name="keywords" content="Java full stack developer projects, backend developer portfolio examples, Spring Boot projects, React full stack projects, real-world web development portfolio, Java projects, microservices projects, REST API projects" />
+      </Helmet>
       <div className="section-container">
         <div className="section-header">
           <span className="section-kicker">Projects</span>
@@ -158,18 +164,20 @@ const Projects = () => {
               </div>
 
               <div className="project-actions">
-                <Link to={`/projects/${project.id}`} className="project-link primary">
+                <Link to={`/projects/${project.id}`} className="project-link primary" aria-label={`View ${project.title} case study`}>
                   <span>View Case Study</span>
-                  <ExternalLink size={16} />
+                  <ExternalLink size={16} aria-hidden="true" />
                 </Link>
                 <div className="repo-dropdown-container">
                   <button
                     className="project-link secondary"
                     onClick={() => setOpenDropdown(openDropdown === project.id ? null : project.id)}
+                    aria-label={`Explore ${project.title} repositories`}
+                    aria-expanded={openDropdown === project.id}
                   >
                     <span>Explore Repo</span>
-                    <Github size={16} />
-                    <ChevronDown size={14} className={openDropdown === project.id ? 'rotate' : ''} />
+                    <Github size={16} aria-hidden="true" />
+                    <ChevronDown size={14} className={openDropdown === project.id ? 'rotate' : ''} aria-hidden="true" />
                   </button>
                   {openDropdown === project.id && (
                     <div className="repo-dropdown">
@@ -179,10 +187,11 @@ const Projects = () => {
                         rel="noreferrer"
                         className="repo-dropdown-item"
                         onClick={() => setOpenDropdown(null)}
+                        aria-label={`View ${project.title} frontend repository on GitHub`}
                       >
-                        <Github size={16} />
+                        <Github size={16} aria-hidden="true" />
                         <span>Frontend Repository</span>
-                        <ExternalLink size={14} />
+                        <ExternalLink size={14} aria-hidden="true" />
                       </a>
                       <a
                         href={project.links.backendRepo}
@@ -190,10 +199,11 @@ const Projects = () => {
                         rel="noreferrer"
                         className="repo-dropdown-item"
                         onClick={() => setOpenDropdown(null)}
+                        aria-label={`View ${project.title} backend repository on GitHub`}
                       >
-                        <Github size={16} />
+                        <Github size={16} aria-hidden="true" />
                         <span>Backend Repository</span>
-                        <ExternalLink size={14} />
+                        <ExternalLink size={14} aria-hidden="true" />
                       </a>
                     </div>
                   )}
@@ -202,8 +212,8 @@ const Projects = () => {
             </motion.article>
           ))}
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   )
 }
 

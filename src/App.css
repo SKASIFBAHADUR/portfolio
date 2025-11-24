@@ -14,3 +14,20 @@
   flex-direction: column;
 }
 
+/* Skip link for keyboard accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #667eea;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 10000;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}

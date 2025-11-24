@@ -13,8 +13,15 @@ const offerings = [
   'Fintech-grade security, auth & compliance',
 ]
 
+import { Helmet } from 'react-helmet-async'
+
 const Contact = () => (
   <section id="contact" className="contact">
+    <Helmet>
+      <title>Contact | Hire Freelance Full Stack Developer in India | Shaik Bahadur</title>
+      <meta name="description" content="Contact me for web development, backend development, or full stack projects. As a freelance full stack developer in India, I help businesses build fast, scalable, and modern applications. Connect with me for collaborations, freelance work, or full-time opportunities." />
+      <meta name="keywords" content="contact full stack developer, hire freelance full stack developer in India, contact Java developer, hire backend developer, full stack developer enquiry, hire Spring Boot developer, contact React developer, freelance developer India" />
+    </Helmet>
     <div className="contact-grid section-container">
       <motion.div
         className="contact-hero"
@@ -52,16 +59,16 @@ const Contact = () => (
         </div>
 
         <div className="contact-actions">
-          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=System%20Call%20Booking">
-            <Mail size={18} />
+          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=System%20Call%20Booking" aria-label="Send email to book a systems call">
+            <Mail size={18} aria-hidden="true" />
             Book a systems call
           </a>
-          <a className="cta secondary" href="https://wa.me/917893718330" target="_blank" rel="noreferrer">
-            <Phone size={18} />
+          <a className="cta secondary" href="https://wa.me/917893718330" target="_blank" rel="noreferrer" aria-label="Chat with me on WhatsApp">
+            <Phone size={18} aria-hidden="true" />
             Chat on WhatsApp
           </a>
-          <Link className="cta tertiary" to="/">
-            <Home size={18} />
+          <Link className="cta tertiary" to="/" aria-label="Return to homepage">
+            <Home size={18} aria-hidden="true" />
             Back to home
           </Link>
         </div>
@@ -85,22 +92,22 @@ const Contact = () => (
         </div>
 
         <div className="panel-links">
-          <a href="https://github.com/SKASIFBAHADUR" target="_blank" rel="noreferrer" className="panel-link">
-            <Github size={18} />
+          <a href="https://github.com/SKASIFBAHADUR" target="_blank" rel="noreferrer" className="panel-link" aria-label="Visit my GitHub profile">
+            <Github size={18} aria-hidden="true" />
             GitHub
-            <ArrowRight size={16} />
+            <ArrowRight size={16} aria-hidden="true" />
           </a>
-          <a href="https://www.linkedin.com/in/bahadur-sk-05701031b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="panel-link">
-            <Linkedin size={18} />
+          <a href="https://www.linkedin.com/in/bahadur-sk-05701031b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="panel-link" aria-label="Visit my LinkedIn profile">
+            <Linkedin size={18} aria-hidden="true" />
             LinkedIn
-            <ArrowRight size={16} />
+            <ArrowRight size={16} aria-hidden="true" />
           </a>
         </div>
 
         <div className="panel-footer">
           <p>Need a quick architecture review?</p>
-          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=Architecture%20Review%20Request">
-            <Shield size={18} />
+          <a className="cta primary" href="mailto:shaikbahadur19@gmail.com?subject=Architecture%20Review%20Request" aria-label="Request an architecture review via email">
+            <Shield size={18} aria-hidden="true" />
             Request review
           </a>
         </div>

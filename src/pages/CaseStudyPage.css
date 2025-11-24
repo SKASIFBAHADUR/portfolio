@@ -25,7 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -39,6 +39,7 @@
   0% {
     transform: translate3d(0, 0, 0);
   }
+
   100% {
     transform: translate3d(50px, 50px, 0);
   }
@@ -71,10 +72,13 @@
 }
 
 @keyframes particleFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
     opacity: 0.1;
   }
+
   50% {
     transform: translate3d(calc(sin(var(--index, 0)) * 50px), -100px, 0);
     opacity: 0.4;
@@ -120,12 +124,16 @@
 }
 
 @keyframes orbFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   33% {
     transform: translate3d(30px, -30px, 0) scale(1.1);
   }
+
   66% {
     transform: translate3d(-20px, 20px, 0) scale(0.9);
   }
@@ -677,6 +685,52 @@
   line-height: 1.6;
 }
 
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.impact-item {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.impact-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+}
+
+.impact-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.impact-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.impact-item p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .performance-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -978,24 +1032,28 @@
     width: 150px;
     height: 150px;
     filter: blur(40px);
-    opacity: 0.2; /* Reduce opacity on mobile */
+    opacity: 0.2;
+    /* Reduce opacity on mobile */
   }
 
   .animated-grid {
     background-size: 30px 30px;
-    opacity: 0.3; /* Reduce grid opacity on mobile */
+    opacity: 0.3;
+    /* Reduce grid opacity on mobile */
   }
 
   .floating-particles {
-    display: none; /* Hide particles on mobile for better performance */
+    display: none;
+    /* Hide particles on mobile for better performance */
   }
 
   .case-study-section {
-    padding: 1.25rem; /* Reduce padding on mobile */
+    padding: 1.25rem;
+    /* Reduce padding on mobile */
   }
 
   .section-content {
-    font-size: 1rem; /* Slightly smaller text on mobile */
+    font-size: 1rem;
+    /* Slightly smaller text on mobile */
   }
 }
-

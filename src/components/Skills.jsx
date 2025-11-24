@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import {
   Server,
   Activity,
@@ -137,6 +138,11 @@ const Skills = () => {
 
   return (
     <section id="skills" className="skills">
+      <Helmet>
+        <title>Skills | Full Stack Developer Skills | Shaik Bahadur</title>
+        <meta name="description" content="A complete list of my technical and professional skills as a full stack developer. Proficient in Java, Spring Boot, React, JavaScript, MySQL, MongoDB, APIs, microservices, and cloud-ready deployments. My skillset covers frontend, backend, databases, version control, and clean coding practices." />
+        <meta name="keywords" content="full stack developer skills, Java and Spring Boot skills, React developer skillset, backend developer technical skills, web development technologies list, Java skills, microservices skills, REST API development, database skills" />
+      </Helmet>
       <div className="section-container">
         <div className="skills-header">
           <div className="section-header">
@@ -230,11 +236,11 @@ const Skills = () => {
         <div className="skills-tags">
           {['scalability', 'resilience', 'concurrency', 'API design', 'performance engineering', 'observability', 'CI/CD automation', 'cloud-native delivery'].map(
             (tag
-          ) => (
-            <span key={tag} className="skills-tag">
-              {tag}
-            </span>
-          ))}
+            ) => (
+              <span key={tag} className="skills-tag">
+                {tag}
+              </span>
+            ))}
         </div>
       </div>
     </section>

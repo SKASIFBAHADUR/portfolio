@@ -1,154 +1,148 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { Code2, Rocket, Zap, Shield, TrendingUp, Calendar, Target } from 'lucide-react'
+import { User, Code2, Briefcase, Award, CheckCircle2, Zap } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 import './Section.css'
 import './About.css'
 
 const About = () => {
-  const [isMobile, setIsMobile] = useState(false)
-  
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-  const timeline = [
-    {
-      year: '2019',
-      title: 'Started as Web Developer',
-      description: 'Built my first full-stack applications and fell in love with backend architecture',
-    },
-    {
-      year: '2021',
-      title: 'Focused on Backend Systems',
-      description: 'Deep dived into Java, Spring Boot, and designing scalable microservices',
-    },
-    {
-      year: '2023',
-      title: 'System Design & Architecture',
-      description: 'Now designing distributed systems and breaking monoliths into scalable services',
-    },
-  ]
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
       },
     },
   }
 
+  const coreSkills = [
+    'Java (Advanced)',
+    'Spring Boot',
+    'REST APIs, Microservices',
+    'React, JavaScript, HTML5, CSS3, Tailwind',
+    'MySQL, MongoDB',
+    'Git, GitHub, GitHub Actions',
+    'JWT authentication & Authorization',
+    'Docker (basics), cloud deployments',
+    'System Design (beginner → intermediate)',
+    'Data Structures & Algorithms'
+  ]
+
+  const professionalSkills = [
+    'Clean coding practices',
+    'Scalable backend architecture',
+    'Problem-solving & debugging',
+    'API design & performance optimization',
+    'Writing reusable, maintainable code',
+    'Building real-world, production-grade features'
+  ]
+
+  const valueProps = [
+    {
+      icon: Code2,
+      title: 'Full-Stack Ownership',
+      description: 'I combine frontend creativity with backend power — end-to-end ownership of the product'
+    },
+    {
+      icon: Zap,
+      title: 'Built for Scale',
+      description: 'I build for performance, scalability, and future growth — not just to make it work, but to make it last'
+    },
+    {
+      icon: Award,
+      title: 'Design + Engineering',
+      description: 'I understand both design and engineering — UX, clarity, responsiveness, and speed'
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Production-Ready Code',
+      description: 'I write secure, optimized, and production-ready code following industry best practices'
+    }
+  ]
+
   return (
     <section id="about" className="about">
+      <Helmet>
+        <title>About Me | Full Stack Developer Bio | Shaik Bahadur</title>
+        <meta name="description" content="I'm Shaik Bahadur, a passionate full stack developer with strong expertise in Java, Spring Boot, React, SQL, and backend engineering. My journey combines clean code, problem-solving, scalable architecture, and modern web developer portfolio design. Learn more about who I am, what I do, how I work, and the values that guide my development approach." />
+        <meta name="keywords" content="full stack developer bio, about full stack developer, Java backend developer profile, modern web developer portfolio design, professional developer introduction, full stack developer India, Java Spring Boot developer, React developer profile" />
+      </Helmet>
       <div className="section-container">
-        {/* Personal Intro Line */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="about-intro"
-        >
-          <Target className="intro-icon" size={18} />
-          <span>My Journey from Web Dev to System Architect</span>
-        </motion.div>
-
-        {/* Main Title with Visual Hierarchy */}
+        {/* Header */}
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8 }}
         >
-          <span className="section-kicker">About</span>
+          <span className="section-kicker">About Me</span>
           <h2 className="section-title">
-            I break complex problems into{' '}
-            <span className="gradient-highlight">practical, scalable services</span> and ship{' '}
-            <span className="gradient-highlight">reliable systems fast</span> — without compromising performance or security.
+            Building <span className="gradient-highlight">efficient, scalable, and high-performance</span> web applications designed to solve real-world problems
           </h2>
-          <p className="section-subtitle">
-            I started as a web developer, now I design distributed systems. I enjoy{' '}
-            <span className="text-highlight">reverse engineering systems</span> &{' '}
-            <span className="text-highlight">breaking monoliths into scalable services</span>.
+        </motion.div>
+
+        {/* Who I Am */}
+        <motion.div
+          className="about-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="card-header">
+            <User className="card-icon" size={24} />
+            <h3>Who I Am</h3>
+          </div>
+          <p>
+            I'm <span className="text-highlight">Shaik Bahadur</span>, a passionate <span className="text-highlight">Full Stack Developer from India</span> with strong expertise in Java, Spring Boot, React, SQL, and modern backend development.
+            My journey is built on continuous learning, strong fundamentals, and a deep interest in systems that power modern digital products.
           </p>
         </motion.div>
 
-        {/* Profile Section with Photo Placeholder */}
+        {/* What I Do */}
         <motion.div
-          className="about-profile"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="about-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="profile-image-wrapper">
-            <div className="profile-image">
-              <Code2 size={48} className="profile-icon" />
-            </div>
-            <div className="profile-glow" />
+          <div className="card-header">
+            <Briefcase className="card-icon" size={24} />
+            <h3>What I Do</h3>
           </div>
-          <div className="profile-info">
-            <h3>Shaik Bahadur</h3>
-            <p>Java Backend & System Design Engineer</p>
-            <div className="profile-badges">
-              <span className="badge">Backend Focused</span>
-              <span className="badge">System Design</span>
-              <span className="badge">Full Stack</span>
-            </div>
-          </div>
+          <p>
+            I design and develop <span className="text-highlight">complete end-to-end web solutions</span> — from clean, responsive frontends to powerful backend systems.
+          </p>
+          <ul style={{ marginTop: '1rem' }}>
+            <li><CheckCircle2 size={16} className="list-icon" /> Full-stack web application development</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> Backend engineering using Spring Boot, Java, and microservices</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> REST API development and integration</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> Database design & optimization (MySQL, MongoDB)</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> Cloud-ready deployments and CI/CD workflows</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> UI development using React, Tailwind, JavaScript</li>
+            <li><CheckCircle2 size={16} className="list-icon" /> Building scalable and secure systems following industry best practices</li>
+          </ul>
+          <p style={{ marginTop: '1rem' }}>
+            Whether it's a business website, portfolio, enterprise-style backend system, or API-driven service, I deliver <span className="text-highlight">fast, clean, and reliable solutions</span>.
+          </p>
         </motion.div>
 
-        {/* Timeline */}
-        <motion.div
-          className="about-timeline"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: isMobile ? '-50px' : '-100px' }}
-          transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.3 }}
-        >
-          <h3 className="timeline-title">
-            <Calendar className="timeline-title-icon" size={24} />
-            Career Journey
-          </h3>
-          <div className="timeline-items">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.year}
-                className="timeline-item"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <div className="timeline-marker" />
-                <div className="timeline-content">
-                  <div className="timeline-year">{item.year}</div>
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Main Content Cards */}
+        {/* Skills Section */}
         <motion.div
           className="about-grid"
           variants={containerVariants}
@@ -158,36 +152,86 @@ const About = () => {
         >
           <motion.div className="about-card" variants={itemVariants}>
             <div className="card-header">
-              <Rocket className="card-icon" size={24} />
-              <h3>Engineering Focus</h3>
+              <Code2 className="card-icon" size={24} />
+              <h3>Core Technical Skills</h3>
             </div>
-            <p>
-              I break complex problems into practical, scalable services and ship reliable systems fast — without compromising{' '}
-              <span className="text-highlight">performance</span> or <span className="text-highlight">security</span>.
-              Every system I build is designed with observability and maintainability from day one.
-            </p>
+            <ul>
+              {coreSkills.map((skill, index) => (
+                <li key={index}>
+                  <Zap size={16} className="list-icon" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
           <motion.div className="about-card" variants={itemVariants}>
             <div className="card-header">
-              <TrendingUp className="card-icon" size={24} />
-              <h3>Currently Exploring</h3>
+              <Briefcase className="card-icon" size={24} />
+              <h3>Professional Skillset</h3>
             </div>
             <ul>
-              <li>
-                <Zap className="list-icon" size={16} />
-                Event-driven microservices and message brokers
-              </li>
-              <li>
-                <Zap className="list-icon" size={16} />
-                Container orchestration and automated deployments
-              </li>
-              <li>
-                <Zap className="list-icon" size={16} />
-                Distributed caching and real-time data pipelines
-              </li>
+              {professionalSkills.map((skill, index) => (
+                <li key={index}>
+                  <CheckCircle2 size={16} className="list-icon" />
+                  {skill}
+                </li>
+              ))}
             </ul>
           </motion.div>
+        </motion.div>
+
+        {/* Value Proposition */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h3 className="section-subtitle" style={{ textAlign: 'center', marginTop: '3rem', marginBottom: '2rem', fontSize: '1.5rem' }}>
+            Why Choose Me
+          </h3>
+        </motion.div>
+
+        <motion.div
+          className="about-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          {valueProps.map((prop, index) => (
+            <motion.div key={index} className="about-card" variants={itemVariants}>
+              <div className="card-header">
+                <prop.icon className="card-icon" size={24} />
+                <h3>{prop.title}</h3>
+              </div>
+              <p>{prop.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Final Statement */}
+        <motion.div
+          className="about-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          style={{ marginTop: '2rem' }}
+        >
+          <p style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+            I <span className="text-highlight">continuously improve myself</span> — preparing for Google-level standards in system design, DSA, and backend engineering.
+            I focus on <span className="text-highlight">solving problems, not just writing code</span>. Every project you see in my portfolio has clear thought, process, and purpose behind it.
+          </p>
+          <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginTop: '1rem' }}>
+            I deliver results: <span className="text-highlight">Clean UI → Fast backend → Smooth user experience → Stable deployments</span>.
+          </p>
+          <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <Link to="/projects" className="text-highlight" style={{ textDecoration: 'underline', cursor: 'pointer', fontSize: '1.1rem' }}>
+              See my work in action →
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
